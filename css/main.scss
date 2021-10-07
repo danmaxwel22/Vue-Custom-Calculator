@@ -64,6 +64,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, td, th, button {
     #{&}_screen_edge,
     #{&}_control_buttons_edge {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         width: 100%;
         height: auto;
@@ -135,11 +136,11 @@ body, h1, h2, h3, h4, h5, h6, p, a, td, th, button {
         margin: 0 20px;
         width: 100%;
         height: auto;
-        transition: all .3s ease-in-out;
 
         button {
             margin: 0;
             padding: 0;
+            margin-bottom: 15px;
             cursor: pointer;
             color: #95a5b7;
             border-top: 2px solid #404c59;
@@ -193,7 +194,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, td, th, button {
 
         .column_5 {
             grid-template-columns: auto auto auto auto auto;
-            height: calc(380px / 6);
             
             .control_buttons {
                 button {
@@ -207,13 +207,13 @@ body, h1, h2, h3, h4, h5, h6, p, a, td, th, button {
 
         .column_4 {
             grid-template-columns: auto auto auto auto;
-            height: calc(380px - (380px / 6));
             
             .control_buttons {
                 button {
                     width: 48px;
                     height: 38px;
                     border-radius: 6px 6px 12px 12px;
+                    margin-top: 9px;
                 }
 
                 &.gr-2 {
@@ -221,7 +221,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, td, th, button {
                     grid-row: 4 / 6;
                     
                     button {
-                        height: 81%;
+                        height: 100px;
                     }
                 }
             }

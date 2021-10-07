@@ -78,6 +78,8 @@ body, h1, h2, h3, h4, h5, h6, p, a, td, th, button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -155,13 +157,12 @@ body, h1, h2, h3, h4, h5, h6, p, a, td, th, button {
   margin: 0 20px;
   width: 100%;
   height: auto;
-  -webkit-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
 }
 
 .calculator .calculator_control_buttons button {
   margin: 0;
   padding: 0;
+  margin-bottom: 15px;
   cursor: pointer;
   color: #95a5b7;
   border-top: 2px solid #404c59;
@@ -219,7 +220,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, td, th, button {
 .calculator .calculator_control_buttons .column_5 {
   -ms-grid-columns: auto auto auto auto auto;
       grid-template-columns: auto auto auto auto auto;
-  height: calc(380px / 6);
 }
 
 .calculator .calculator_control_buttons .column_5 .control_buttons button {
@@ -232,13 +232,13 @@ body, h1, h2, h3, h4, h5, h6, p, a, td, th, button {
 .calculator .calculator_control_buttons .column_4 {
   -ms-grid-columns: auto auto auto auto;
       grid-template-columns: auto auto auto auto;
-  height: calc(380px - (380px / 6));
 }
 
 .calculator .calculator_control_buttons .column_4 .control_buttons button {
   width: 48px;
   height: 38px;
   border-radius: 6px 6px 12px 12px;
+  margin-top: 9px;
 }
 
 .calculator .calculator_control_buttons .column_4 .control_buttons.gr-2 {
@@ -250,6 +250,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, td, th, button {
 }
 
 .calculator .calculator_control_buttons .column_4 .control_buttons.gr-2 button {
-  height: 81%;
+  height: 100px;
 }
 /*# sourceMappingURL=main.css.map */

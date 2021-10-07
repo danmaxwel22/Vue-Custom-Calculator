@@ -1,3 +1,17 @@
+const debounce = (func, wait, immediate) => {
+	var timeout
+	return function() {
+		var context = this, args = arguments
+		var later = function() {
+			timeout = null
+			if (!immediate) func.apply(context, args)
+		}
+		var callNow = immediate && !timeout
+		clearTimeout(timeout)
+		timeout = setTimeout(later, wait)
+		if (callNow) func.apply(context, args)
+	}
+}
 new Vue({
     el: '#calculator',
     data: {
@@ -52,7 +66,7 @@ new Vue({
             if(length == 13) return vm.inputAreaFS -= 1.4
         },
 
-        revertSign: _.debounce(function() {
+        revertSign: debounce(function() {
             const vm = this
             var ia = vm.inputArea
             var ca
@@ -68,7 +82,7 @@ new Vue({
             console.log(vm.cachingArea)
         }, 100),
 
-        getSquareRoot: _.debounce(function() {
+        getSquareRoot: debounce(function() {
             const vm = this
             var ca = Math.sqrt(vm.cachingArea)
             var ia = vm.generateELE( "stg_DG", "&#8730(" + vm.inputArea + ")" )
@@ -85,7 +99,7 @@ new Vue({
             vm.historyLog.push("square-root")
         }, 100),
 
-        insertDIG: _.debounce(function(val) {
+        insertDIG: debounce(function(val) {
             val = String(val)
             const vm = this
             var currDigits = vm.cachingArea
@@ -105,7 +119,7 @@ new Vue({
             vm.historyLog.push("insert-on-field")
         }, 100),
 
-        insertOPE: _.debounce(function( val ) {
+        insertOPE: debounce(function( val ) {
             val = String( val )
             const vm = this
             var currDigits = vm.operationArea
@@ -208,7 +222,7 @@ new Vue({
             vm.historyLog.push("insert-on-stage")
         }, 100), 
 
-        computeALL: _.debounce(function() {
+        computeALL: debounce(function() {
             const vm = this
             var oa = vm.operationArea
             vm.inputAreaFS = 23
@@ -247,7 +261,7 @@ new Vue({
             }
         }, 100),
 
-        clearStages: _.debounce(function() {
+        clearStages: debounce(function() {
             const vm = this
             const isDone = vm.historyLog[vm.historyLog.length - 1]
             vm.inputAreaFS = 23
@@ -266,11 +280,11 @@ new Vue({
             vm.historyLog.push("clear-on-areas")
         }, 100),
 
-        clearMemory: _.debounce(function() {
+        clearMemory: debounce(function() {
             this.memoryArea = ''
         }, 100),
 
-        useMemory: _.debounce(function() {
+        useMemory: debounce(function() {
             const vm = this
             var mem = vm.memoryArea
             const len = vm.numberWithCommas(mem).length
@@ -286,12 +300,12 @@ new Vue({
             vm.cachingArea = mem
         }, 100),
 
-        addToMemory: _.debounce(function() {
+        addToMemory: debounce(function() {
             const vm = this
             vm.memoryArea = +vm.memoryArea + +vm.cachingArea
         }, 100),
 
-        subtractToMemory: _.debounce(function() {
+        subtractToMemory: debounce(function() {
             const vm = this
             vm.memoryArea = +vm.memoryArea - +vm.cachingArea
         }, 100),
