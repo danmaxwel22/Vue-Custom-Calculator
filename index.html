@@ -1,0 +1,123 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator made by vue</title>
+
+    <link rel="stylesheet" href="css/main.css" />
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <section id="calculator">
+    <header>
+      <h3>Custom Calculator</h3>
+    </header>
+    <div class="calculator">
+      <div class="calculator_outer_edge">
+        <div class="calculator_inner_edge">
+          <div class="calculator_screen_edge">
+            <div class="calculator_screen">
+              <template>
+                <div class="rcell">
+                  <span class="t_memory" v-if="memoryArea">M</span>
+                  <div class="t_operations" v-html="stagingArea"></div>
+                </div>
+                <div class="rcell">
+                  <span class="cal_digits" :style="{fontSize: inputAreaFS + 'px'}">{{ inputArea }}</span>
+                </div>
+              </template>
+            </div>
+          </div>
+          <div class="calculator_control_buttons_edge">
+            <div class="calculator_control_buttons">
+              <div class="column_5 col">
+                <div class="control_buttons">
+                  <button class="btn_top _emerald" @click="clearMemory">MC</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_top _emerald" @click="useMemory">MR</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_top _emerald" @click="addToMemory">M +</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_top _emerald" @click="subtractToMemory">M -</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_top _emerald" @click="clearStages">AC</button>
+                </div>
+              </div>
+              <div class="column_4 col">
+                <div class="control_buttons">
+                  <button class="btn_item _emerald f_up-1" @click="revertSign">&#177</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item _emerald" @click="getSquareRoot">&#8730</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item _saphire" @click="insertOPE('%')">&#37</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item _saphire f_up" @click="insertOPE('&#247')">&#247</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item" @click="insertDIG(7)">7</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item" @click="insertDIG(8)">8</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item" @click="insertDIG(9)">9</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item _saphire f_up" @click="insertOPE('*')">&#xd7</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item" @click="insertDIG(4)">4</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item" @click="insertDIG(5)">5</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item" @click="insertDIG(6)">6</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item _saphire f_up" @click="insertOPE('&#8722')">&#8722</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item" @click="insertDIG(1)">1</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item" @click="insertDIG(2)">2</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item" @click="insertDIG(3)">3</button>
+                </div>
+                <div class="control_buttons gr-2">
+                  <button class="btn_item _saphire f_up" @click="insertOPE('&#43')">&#43</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item" @click="insertDIG(0)">0</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item _light" @click="insertDIG('.')">.</button>
+                </div>
+                <div class="control_buttons">
+                  <button class="btn_item _saphire f_up" @click="computeALL">&#61</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
