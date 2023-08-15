@@ -1,3 +1,4 @@
+console.log("vue")
 const debounce = (func, wait, immediate) => {
 	var timeout
 	return function() {
